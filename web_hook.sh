@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Reloads system variables
 . /repo.cnf
 
 repo="${LGV_REPO}"
@@ -7,7 +8,7 @@ branch="${LGV_BRANCH}"
 
 directory="/var/www/html/app"
 
-if [ "$repo" != "" ] && [ "$branch" != "" ]; then
+if [ "$repo" != "bind" ]; then
 
 
 	if [ -d "$directory" ]; then
@@ -17,12 +18,14 @@ if [ "$repo" != "" ] && [ "$branch" != "" ]; then
 
 	mkdir "$directory"
 	cd "$directory"
+
+    echo -e "Cloning repo\n\n"
 	git clone -b "$branch" "$repo" .
 
-	echo -e "Updated..!"
+	echo -e "Updated"
 
 
 else
-	echo -e "Viables not set"
+	[ "$repo" != "bind" ] && echo -e "App is mounted." || echo -e "Variables are not set."
 
 fi
