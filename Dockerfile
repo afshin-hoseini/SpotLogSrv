@@ -1,6 +1,12 @@
 FROM mobingi/ubuntu-apache2-php7:7.2
 
 
+# ------ Sets the timezone to Iran/Tehran --------
+
+RUN \
+	apt-get -y install tzdata && \
+  	ln -sf /usr/share/zoneinfo/Asia/Tehran /etc/localtime
+
 # ------ Mariadb installation --------
 
 RUN {\
