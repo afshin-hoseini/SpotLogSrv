@@ -38,6 +38,10 @@ fi
 chown -R www-data /var/www/html/app
 chown www-data /var/www/html/web_hook.sh
 
+if [ -d /var/www/data ]; then
+    chown -R www-data /var/www/data
+fi
+
 echo -e "**** SERVER STARTED SUCCESSFULLY ****"
 
 tail -f /dev/null
